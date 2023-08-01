@@ -4,6 +4,7 @@ import "./Cart.css";
 import React, { useContext } from "react";
 const Cart = () => {
   const { cart, setCart } = useContext(MyContext);
+  let sum = 0;
   return (
     <>
       <div className="Cart">
@@ -26,29 +27,56 @@ const Cart = () => {
               />
             </div>
           )}
-          {cart.map((item, i) => (
-            <div className="amazone_clone-cart_item" key={i}>
-              <Products
-                id={i}
-                title={item.title}
-                price={item.price}
-                rating={item.rating}
-                image={item.image}
-                btnText={"Remove From cart"}
-              />
-              {/* <button
-                className="remove_clone-remove_from_cart"
-                onClick={() => {
-                  const arr = cart;
-                  arr.splice(i, 1);
-                  setCart([...arr]);
-                  localStorage.setItem("cart", JSON.stringify(arr));
-                }}
-              >
-                Remove Cart
-              </button> */}
+          <div className="amazone_clone-cart_items">
+            <div className="amazone_clone-cart_left_side">
+              {cart.map((item, i) => (
+                <div className="amazone_clone-cart_item" key={item.id}>
+                  <Products
+                    id={item.id}
+                    title={item.title}
+                    price={item.price}
+                    rating={item.rating}
+                    image={item.image}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="amazone_clone-cart_items_right">
+              {
+                cart.length != 0 && (
+                  // cart.map((item)=><div key={item.id}>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cart.map((item, i) => {
+                        sum += parseInt(item.price);
+                        return (
+                          <tr key={i}>
+                            <td>{i + 1}</td>
+                            <td>{item.title}</td>
+                            <td>{item.price}</td>
+                          </tr>
+                        );
+                      })}
+                      <tr>
+                        <td>Total</td>
+                        <td>GST 18%</td>
+                        <td>{Math.ceil(sum * 0.72)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )
+
+                // </div>)
+              }
+            </div>
+          </div>
         </div>
       </div>
     </>

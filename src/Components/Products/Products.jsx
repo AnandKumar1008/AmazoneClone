@@ -5,22 +5,41 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useStateValue } from "../StateProvider";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../App";
 
-const Products = ({ id, title, price, rating, image, btnText = "" }) => {
-  const { cart, setCart } = useContext(MyContext);
+const Products = ({ id, title, price, rating, image, text }) => {
+  const { cart, setCart, cartId, setCartId } = useContext(MyContext);
+  const [isCarted, setIsCarted] = useState(cartId.includes(id));
+  useEffect(() => {
+    localStorage.setItem("cartId", JSON.stringify(cartId));
+  }, [cartId]);
   let halfRating = (rating - Math.floor(rating)) * 10;
   let outline = 0;
   halfRating > 0
     ? (outline = 5 - Math.ceil(rating))
     : (outline = 5 - Math.floor(rating));
   // const [{}, dispatch] = useStateValue();
-  const handleClick = () => {
-    const arr = cart;
-    arr.splice(id, 1);
-    setCart([...arr]);
-    localStorage.setItem("cart", JSON.stringify(arr));
+  const RemoveFromCart = () => {
+    // const arr = cart;
+    setIsCarted(false);
+    const index = cart.findIndex((item) => item.id == id);
+    if (index != -1) {
+      const arr = [...cart];
+      arr.splice(index, 1);
+      setCart(arr);
+      localStorage.setItem("cart", JSON.stringify(arr));
+    }
+    const idx = cartId.indexOf(id);
+    if (idx != -1) {
+      const arr = [...cartId];
+      arr.splice(idx, 1);
+      setCartId(arr);
+    }
+    // cartId.remove
+    // arr.splice(id, 1);
+    // setCart([...arr]);
+    // localStorage.setItem("cart", JSON.stringify(arr));
   };
   const addToCart = () => {
     // cart
@@ -34,9 +53,10 @@ const Products = ({ id, title, price, rating, image, btnText = "" }) => {
       price: price,
       rating: rating,
     };
-    console.log(item);
-    console.log(cart);
+
     setCart([...cart, item]);
+    setCartId([...cartId, id]);
+    setIsCarted(true);
     const localItem = JSON.parse(localStorage.getItem("cart")) || [];
     localItem.push(item);
     localStorage.setItem("cart", JSON.stringify(localItem));
@@ -69,8 +89,8 @@ const Products = ({ id, title, price, rating, image, btnText = "" }) => {
             </div>
           </div>
         </div>
-        {btnText ? (
-          <button onClick={handleClick}>Remove From Cart</button>
+        {isCarted ? (
+          <button onClick={RemoveFromCart}>Remove From Cart</button>
         ) : (
           <button onClick={addToCart}> Add To Cart</button>
         )}
