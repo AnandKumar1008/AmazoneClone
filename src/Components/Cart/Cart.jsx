@@ -29,13 +29,14 @@ const Cart = () => {
           {cart.map((item, i) => (
             <div className="amazone_clone-cart_item" key={i}>
               <Products
-                id={item.id}
+                id={i}
                 title={item.title}
                 price={item.price}
                 rating={item.rating}
                 image={item.image}
+                btnText={"Remove From cart"}
               />
-              <button
+              {/* <button
                 className="remove_clone-remove_from_cart"
                 onClick={() => {
                   const arr = cart;
@@ -45,7 +46,7 @@ const Cart = () => {
                 }}
               >
                 Remove Cart
-              </button>
+              </button> */}
             </div>
           ))}
         </div>

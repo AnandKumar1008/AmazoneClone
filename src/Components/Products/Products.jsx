@@ -8,7 +8,7 @@ import { useStateValue } from "../StateProvider";
 import React, { useContext } from "react";
 import { MyContext } from "../../App";
 
-const Products = ({ id, title, price, rating, image }) => {
+const Products = ({ id, title, price, rating, image, btnText }) => {
   const { cart, setCart } = useContext(MyContext);
   let halfRating = (rating - Math.floor(rating)) * 10;
   let outline = 0;
@@ -16,6 +16,12 @@ const Products = ({ id, title, price, rating, image }) => {
     ? (outline = 5 - Math.ceil(rating))
     : (outline = 5 - Math.floor(rating));
   // const [{}, dispatch] = useStateValue();
+  const handleClick = () => {
+    const arr = cart;
+    arr.splice(id, 1);
+    setCart([...arr]);
+    localStorage.setItem("cart", JSON.stringify(arr));
+  };
   const addToCart = () => {
     // cart
     const itemPresent = cart.findIndex((item) => item.image == image);
@@ -63,7 +69,11 @@ const Products = ({ id, title, price, rating, image }) => {
             </div>
           </div>
         </div>
-        <button onClick={addToCart}>Add To Cart</button>
+        {btnText ? (
+          <button onClick={handleClick}>Remove From Cart</button>
+        ) : (
+          <button onClick={addToCart}> Add To Cart</button>
+        )}
       </div>
     </>
   );
