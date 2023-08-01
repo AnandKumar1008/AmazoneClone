@@ -18,10 +18,9 @@ const Products = ({ id, title, price, rating, image }) => {
   // const [{}, dispatch] = useStateValue();
   const addToCart = () => {
     // cart
-
-    console.log(image);
-    if (itemPresent !== -1) return;
+    const itemPresent = cart.findIndex((item) => item.image == image);
     console.log(itemPresent);
+    if (itemPresent != -1) return;
     const item = {
       id: id,
       title: title,
@@ -32,6 +31,9 @@ const Products = ({ id, title, price, rating, image }) => {
     console.log(item);
     console.log(cart);
     setCart([...cart, item]);
+    const localItem = JSON.parse(localStorage.getItem("cart")) || [];
+    localItem.push(item);
+    localStorage.setItem("cart", JSON.stringify(localItem));
   };
   return (
     <>

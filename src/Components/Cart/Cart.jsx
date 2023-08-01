@@ -2,9 +2,8 @@ import { MyContext } from "../../App";
 import Products from "../Products/Products";
 import "./Cart.css";
 import React, { useContext } from "react";
-
 const Cart = () => {
-  const { cart, setcart } = useContext(MyContext);
+  const { cart, setCart } = useContext(MyContext);
   return (
     <>
       <div className="Cart">
@@ -28,14 +27,26 @@ const Cart = () => {
             </div>
           )}
           {cart.map((item, i) => (
-            <Products
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-              image={item.image}
-            />
+            <div className="amazone_clone-cart_item" key={i}>
+              <Products
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                rating={item.rating}
+                image={item.image}
+              />
+              <button
+                className="remove_clone-remove_from_cart"
+                onClick={() => {
+                  const arr = cart;
+                  arr.splice(i, 1);
+                  setCart([...arr]);
+                  localStorage.setItem("cart", JSON.stringify(arr));
+                }}
+              >
+                Remove Cart
+              </button>
+            </div>
           ))}
         </div>
       </div>

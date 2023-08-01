@@ -11,9 +11,11 @@ import ListProducts from "./Components/ListProducts/ListProducts";
 import Profile from "./Components/Profile/Profile";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Checkout";
+
 export const MyContext = createContext();
+const localCart = JSON.parse(localStorage.getItem("cart")) || [];
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(localCart);
   return (
     <div>
       <MyContext.Provider value={{ cart, setCart }}>
