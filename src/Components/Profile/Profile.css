@@ -1,0 +1,48 @@
+.Profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ProfileLogo{
+    width: 100px;
+    margin: 21px 0;
+    object-fit: contain;
+    flex: 1 0 auto;
+}
+
+.ProfileContainer{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 20px;
+}
+
+.ProfileContainer h1{
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.ProfileContainer form h5{
+    margin-bottom: 5px;
+}
+
+
+.ProfileContainer form input{
+    width: 98%;
+    margin: 8px 0;
+    height: 30px;
+    border: 1px solid gray;
+}
+
+.ProfileSigninButton{
+    height: 30px;
+    width: 100%;
+    background: #f0c14b;
+    border-radius: 2px;
+    margin-top: 11px;
+    color: #222;
+    cursor: pointer;
+    border-color: #a88734 #9c7e31 #846a29;
+}

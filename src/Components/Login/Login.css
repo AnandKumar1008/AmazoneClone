@@ -1,0 +1,62 @@
+.Login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.LoginLogo{
+    margin: 21px 0;
+    width: 100px;
+    object-fit: contain;
+}
+
+.LoginContainer{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.LoginContainer h2{
+    margin-bottom: 21px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 35px;
+}
+
+.LoginContainer form input{
+    width: 98%;
+    margin: 8px 0;
+    height: 30px;
+    border: 1px solid gray;
+}
+
+.LoginContainer form button, 
+.LoginRegisterButton{
+    height: 30px;
+    width: 100%;
+    background: #f0c14b;
+    border-radius: 2px;
+    margin-top: 11px;
+    color: #222;
+    cursor: pointer;
+    border-color: #a88734 #9c7e31 #846a29;
+
+}
+
+
+.LoginContainer p{
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.LoginSignInButtonGoogle{
+    text-align: center;
+}
+
+.loginGoogleImg{
+    width: 200px;
+    cursor: pointer;
+}

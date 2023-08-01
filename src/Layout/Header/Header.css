@@ -1,0 +1,126 @@
+.header{
+    display: flex;
+    flex-direction: column;
+}
+.header .header_Top{
+    height: 60px;
+    background:#000;
+    display: flex;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header .header_left_nav{
+    margin-left: 10px;
+    padding: 5px 5px 2px 5px;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.header .logo{
+    width: 100px;
+    margin: 18px 20px 0 20px;
+    object-fit: cover;
+}
+
+.header .headerSearch{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 25px;
+}
+ 
+.header .headerSearch .headerSearch_input{
+    height: 37px;
+    padding: 10px;
+    width: 100%;
+}
+
+.header .headerSearch .headerSearchIcon{
+    background: #cd9042;
+    padding: 6px;
+    height: 37px !important;
+}
+
+/* Nav */
+.headerNavbar, .headerNavbar span{
+    display: flex;
+    justify-content: center;
+}
+
+.headerLinks:first-child{
+    width: 130px;
+}
+.headerLinks{
+    color: #fff;
+}
+.headerNavbar .headerOptions,
+.headerAddress .headerOptions{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.headerNavbar .headerOptions
+.headerOption_one, .headerAddress 
+.headerOption_one{
+    font-size: 12px;
+}
+.headerNavbar .headerOptions
+.headerOption_two,
+.headerAddress .headerOption_one{
+    font-size: 14px;
+    font-weight: 800;
+}
+
+/* For the Basket */
+.header .headerOption_Basket{
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.header .headerOption_Basket
+ .basketCount{
+    border: 1px solid #fff;
+
+    font-size: 16px;
+    border-radius: 100px;
+    margin: 2px 15px 0px -4px;
+    padding: 2px 4px;
+}
+
+
+/*Header bottom*/
+
+.header .headerBottom{
+    background: #000;
+    padding-top: 5px;
+    height: 42px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+
+}
+
+.headerAddress{
+    display: flex;
+}
+
+.headerAddress_Icon{
+    vertical-align:middle;
+}
+
+
+.headerBottom_Navbar{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.headerBottom_Navbar > span{
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+}
