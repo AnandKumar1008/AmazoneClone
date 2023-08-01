@@ -8,7 +8,7 @@ import { useStateValue } from "../StateProvider";
 import React, { useContext } from "react";
 import { MyContext } from "../../App";
 
-const Products = ({ id, title, price, rating, image, btnText }) => {
+const Products = ({ id, title, price, rating, image, btnText = "" }) => {
   const { cart, setCart } = useContext(MyContext);
   let halfRating = (rating - Math.floor(rating)) * 10;
   let outline = 0;
