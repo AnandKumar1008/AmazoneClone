@@ -1,0 +1,29 @@
+.amazone_clone-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+}
+.amazone_clone-card_left {
+  width: 20%;
+  height: auto;
+}
+.amazone_clone-card_left img {
+  max-height: 15rem;
+  max-width: 15rem;
+}
+.amazone_clone-card_right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+..amazone_clone-card_right {
+}
+.amazone_clone-card_heading h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.amazone_clone-card {
+  padding-bottom: 3rem;
+  border-bottom: 2px solid #eaeded;
+}

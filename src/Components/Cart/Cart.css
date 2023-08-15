@@ -3,10 +3,12 @@
   height: max-content;
   padding: 20px;
   display: flex;
+  background-color: #eaeded;
 }
 .CartAdd {
   margin-bottom: 12px;
   width: 100%;
+  background-color: #eaeded;
   height: 200px;
 }
 
@@ -14,14 +16,17 @@
   height: 250px;
   width: 350px;
   object-fit: contain;
+  background-color: #eaeded;
   margin: 10px auto;
 }
 .amazone_clone-cart_item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 1rem;
+  background-color: white;
+  /* padding: 4rem; */
 }
 .remove_clone-remove_from_cart {
   background: #f0c14b;
@@ -33,9 +38,24 @@
   border-color: #a88734 #9c7e31 #846a29;
   /* width: 95%; */
 }
-.amazone_clone-cart_items {
+.amazone_clone-cart_items_total {
   display: flex;
   flex-direction: row;
   align-items: start;
+  width: 100%;
+  background-color: #eaeded;
+  padding: 2rem;
+  gap: 1rem;
   justify-content: center;
+}
+.amazone_clone-cart_left_side {
+  width: 80%;
+}
+.amazone_clone-cart_item {
+  width: 100%;
+}
+.amazone_clone-cart_right_side {
+  width: 20%;
+  background-color: white;
+  padding: 1rem;
 }

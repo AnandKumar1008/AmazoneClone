@@ -1,4 +1,5 @@
 import { MyContext } from "../../App";
+import Card from "../Card/Card";
 import Products from "../Products/Products";
 import "./Cart.css";
 import React, { useContext } from "react";
@@ -27,54 +28,64 @@ const Cart = () => {
               />
             </div>
           )}
-          <div className="amazone_clone-cart_items">
+          <div className="amazone_clone-cart_items_total">
             <div className="amazone_clone-cart_left_side">
               {cart.map((item, i) => (
                 <div className="amazone_clone-cart_item" key={item.id}>
-                  <Products
+                  {/* <Products
                     id={item.id}
                     title={item.title}
                     price={item.price}
                     rating={item.rating}
                     image={item.image}
-                  />
+                  /> */}
+                  <Card item={item} />
                 </div>
               ))}
             </div>
-            <div className="amazone_clone-cart_items_right">
-              {
-                cart.length != 0 && (
-                  // cart.map((item)=><div key={item.id}>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {cart.map((item, i) => {
-                        sum += parseInt(item.price);
-                        return (
-                          <tr key={i}>
-                            <td>{i + 1}</td>
-                            <td>{item.title}</td>
-                            <td>{item.price}</td>
-                          </tr>
-                        );
-                      })}
-                      <tr>
-                        <td>Total</td>
-                        <td>GST 18%</td>
-                        <td>{Math.ceil(sum * 0.72)}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                )
-
-                // </div>)
-              }
+            {/* <div className="amazone_clone-cart_items_right">
+              {cart.length != 0 && (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Product Name</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.map((item, i) => {
+                      sum += parseInt(item.price);
+                      return (
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>{item.title}</td>
+                          <td>{item.price}</td>
+                        </tr>
+                      );
+                    })}
+                    <tr>
+                      <td>Total</td>
+                      <td>GST 18%</td>
+                      <td>{Math.ceil(sum * 0.72)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              )}
+            </div> */}
+            <div className="amazone_clone-cart_right_side">
+              <div className="amazone_clone-cart_right_side_container">
+                <p>
+                  Part of your order qualifies for FREE Delivery. Select this
+                  option at checkout. Details
+                </p>
+                <h5>
+                  Subtotal ({cart.length} items): Rs{" "}
+                  {cart.reduce((sum, item) => {
+                    return sum + parseInt(item?.price);
+                  }, 0)}
+                </h5>
+              </div>
             </div>
           </div>
         </div>
