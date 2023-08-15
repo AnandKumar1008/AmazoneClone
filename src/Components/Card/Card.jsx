@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Card.css";
-const Card = ({ item }) => {
+import { MyContext } from "../../App";
+const Card = ({ item, i }) => {
+  const { setCart, cart } = useContext(MyContext);
   return (
     <div className="amazone_clone-card">
       <div className="amazone_clone-card_left">
@@ -17,6 +19,15 @@ const Card = ({ item }) => {
             Gift options not available.Gift options not available. Learn more
           </p>
           <input type="number" value={1} />
+          <button
+            onClick={() => {
+              const arr = [...cart];
+              arr.splice(i, 1);
+              setCart(arr);
+            }}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

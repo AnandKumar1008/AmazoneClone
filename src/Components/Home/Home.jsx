@@ -118,7 +118,8 @@ const Home = () => {
             />
             {arr.map((item, i) => (
               <Products
-                key={i}
+                key={item.id}
+                id={item.id}
                 title={item.title}
                 price={item.price}
                 rating={4.5}

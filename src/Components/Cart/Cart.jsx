@@ -30,49 +30,14 @@ const Cart = () => {
           )}
           <div className="amazone_clone-cart_items_total">
             <div className="amazone_clone-cart_left_side">
+              <h1>Shipping Cart</h1>
               {cart.map((item, i) => (
                 <div className="amazone_clone-cart_item" key={item.id}>
-                  {/* <Products
-                    id={item.id}
-                    title={item.title}
-                    price={item.price}
-                    rating={item.rating}
-                    image={item.image}
-                  /> */}
-                  <Card item={item} />
+                  <Card item={item} i={i} />
                 </div>
               ))}
             </div>
-            {/* <div className="amazone_clone-cart_items_right">
-              {cart.length != 0 && (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Product Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cart.map((item, i) => {
-                      sum += parseInt(item.price);
-                      return (
-                        <tr key={i}>
-                          <td>{i + 1}</td>
-                          <td>{item.title}</td>
-                          <td>{item.price}</td>
-                        </tr>
-                      );
-                    })}
-                    <tr>
-                      <td>Total</td>
-                      <td>GST 18%</td>
-                      <td>{Math.ceil(sum * 0.72)}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              )}
-            </div> */}
+
             <div className="amazone_clone-cart_right_side">
               <div className="amazone_clone-cart_right_side_container">
                 <p>

@@ -9,11 +9,11 @@ import React, { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../App";
 
 const Products = ({ id, title, price, rating, image, text }) => {
-  const { cart, setCart, cartId, setCartId } = useContext(MyContext);
-  const [isCarted, setIsCarted] = useState(cartId.includes(id));
+  const { cart, setCart } = useContext(MyContext);
+  // const [isCarted, setIsCarted] = useState(cartId.includes(id));
   useEffect(() => {
-    localStorage.setItem("cartId", JSON.stringify(cartId));
-  }, [cartId]);
+    // localStorage.setItem("cartId", JSON.stringify(cartId));
+  }, []);
   let halfRating = (rating - Math.floor(rating)) * 10;
   let outline = 0;
   halfRating > 0
@@ -22,20 +22,15 @@ const Products = ({ id, title, price, rating, image, text }) => {
   // const [{}, dispatch] = useStateValue();
   const RemoveFromCart = () => {
     // const arr = cart;
-    setIsCarted(false);
-    const index = cart.findIndex((item) => item.id == id);
+    const index = cart.findIndex((item) => item.id === id);
+    console.log(index);
     if (index != -1) {
       const arr = [...cart];
       arr.splice(index, 1);
       setCart(arr);
       localStorage.setItem("cart", JSON.stringify(arr));
     }
-    const idx = cartId.indexOf(id);
-    if (idx != -1) {
-      const arr = [...cartId];
-      arr.splice(idx, 1);
-      setCartId(arr);
-    }
+
     // cartId.remove
     // arr.splice(id, 1);
     // setCart([...arr]);
@@ -54,9 +49,8 @@ const Products = ({ id, title, price, rating, image, text }) => {
       rating: rating,
     };
 
-    setCart([...cart, item]);
-    setCartId([...cartId, id]);
-    setIsCarted(true);
+    setCart((p) => [...p, item]);
+    // setIsCarted(true);
     const localItem = JSON.parse(localStorage.getItem("cart")) || [];
     localItem.push(item);
     localStorage.setItem("cart", JSON.stringify(localItem));
@@ -89,7 +83,7 @@ const Products = ({ id, title, price, rating, image, text }) => {
             </div>
           </div>
         </div>
-        {isCarted ? (
+        {cart.some((item) => item.id === id) ? (
           <button onClick={RemoveFromCart}>Remove From Cart</button>
         ) : (
           <button onClick={addToCart}> Add To Cart</button>
