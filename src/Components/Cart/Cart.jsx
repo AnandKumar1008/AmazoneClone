@@ -19,7 +19,7 @@ const Cart = () => {
             />
           }
           {Cart.length === 0 || (
-            <div className>
+            <div className="amazone_clone-cart_heading">
               <h1>Your cart is Empty</h1>
               <img
                 className="EmptyCart"
@@ -50,6 +50,7 @@ const Cart = () => {
                     return sum + parseInt(item?.price);
                   }, 0)}
                 </h5>
+                <button>Proceed To Buy</button>
               </div>
             </div>
           </div>
