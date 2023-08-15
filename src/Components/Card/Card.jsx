@@ -18,7 +18,10 @@ const Card = ({ item, i }) => {
           <p>
             Gift options not available.Gift options not available. Learn more
           </p>
-          <input type="number" value={1} />
+          <span>
+            <label htmlFor="">Qty: </label>
+            <input type="number" value={1} />
+          </span>
           <button
             onClick={() => {
               const arr = [...cart];
